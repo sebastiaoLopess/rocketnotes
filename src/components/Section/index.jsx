@@ -8,3 +8,5 @@ export function Section({title,children}) {
         </Container>
     )
 }
+
+// o children pode receber um bloco de codigo com tags html
