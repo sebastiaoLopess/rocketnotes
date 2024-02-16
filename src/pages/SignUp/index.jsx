@@ -21,15 +21,15 @@ export function SignUp() {
         api.post("/users", {name,email,password})
             .then(() => {
                 alert("usuario cadastrado com sucesso");
-                navigate("/");
-            })
+                navigate("/"); // voltando para a pagina raiz de login
+            }) // confirmando que deu certo
             .catch(error => {
                 if(error.response){
                     alert(error.response.data.message);
                 }else{
                     alert("Nao foi possivel cadastrar");
                 }
-            });
+            }); // retornando erro caso nao der certo
     }
     return (
         <Container>
