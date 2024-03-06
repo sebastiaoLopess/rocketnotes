@@ -12,7 +12,7 @@ export function Details(){
             <Header/>
             <main>
                 <Content>
-
+                    
                     <ButtonText title={"Excluir"}></ButtonText>
 
                     <h1>
