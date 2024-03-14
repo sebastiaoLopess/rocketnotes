@@ -4,6 +4,7 @@ import {Container,Form} from "./style"
 import {Header} from "../../components/Header"
 import { Input } from "../../components/Input"
 import { Textarea } from "../../components/Textarea"
+import { ButtonText } from "../../components/ButtonText"
 import { NoteItem } from "../../components/NoteItem"
 import { Section } from "../../components/Section"
 import { Button } from "../../components/Button"
@@ -33,6 +34,10 @@ export function New(){
         // essa é a funcao que adiciona um link a lista de links
         // ele pega o new link e adiciona no estado setlinks, despejando o que ja tinha no array links
         // e o novo é adicionado com os antigos criando um novo array com o ...prevstate
+    }
+
+    function handleBack() {
+        navigate(-1);
     }
 
     function handleRemoveLink(deleted){
@@ -86,9 +91,7 @@ export function New(){
                 <Form>
                     <header>
                         <h1>Criar Nota</h1>
-                        <Link to = "/">
-                            Voltar
-                        </Link>
+                        <ButtonText title = "Voltar" onClick = {handleBack} />
                     </header>
 
                     <Input 

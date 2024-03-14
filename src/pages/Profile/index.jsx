@@ -7,11 +7,13 @@ import avatarPlaceholder from "../../assets/avatar_placeholder.svg"
 import { Link } from "react-router-dom";
 import { useAuth } from '../../hooks/auth';
 import { api } from "../../services/api";
+import { ButtonText } from "../../components/ButtonText"
+import { useNavigate } from "react-router-dom"
 
 export function Profile(){
 
   
-
+    const navigate = useNavigate();
     const { user,updateProfile } = useAuth();
     
     const [name,setName] = useState(user.name);
@@ -24,17 +26,26 @@ export function Profile(){
     const [avatarFile, setAvatarFile] = useState(null);
 
 
+    function handleBack() {
+        navigate(-1);
+    }
+
+
 
     async function handleUpdate(){
-        const user = {
+        const updated = {
             name,
             email,
             password: passwordNew,
             old_password: passwordOld
         }
 
-        await updateProfile({user,avatarFile});
+       const userUpdated = Object.assign(user,updated);
+
+        await updateProfile({user: userUpdated,avatarFile});
     }
+
+
 
     async function handleChangeAvatar(event){
         const file = event.target.files[0];
@@ -49,9 +60,7 @@ export function Profile(){
     return(
         <Container>
             <header>
-                <Link to = "/">
-                    <FiArrowLeft />
-                </Link>
+                <ButtonText title = "Voltar" onClick = {handleBack} />
                 
             </header>
 
